@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
 import math
-import cv2
 
 
 def efecto_rippling(imagen):
@@ -54,23 +53,10 @@ def efecto_rippling(imagen):
         A_x += 5
         A_y += 5
 
-    """
-    video = cv2.VideoWriter("video_salida.avi", cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 50, (m, n), True)
-    for a in range(0, 50):
-        video.write(Y[:, :, :, a])
-    cv2.destroyAllWindows()
-    video.release()"""
-
     video = imageio.get_writer("video_salida.mp4")
     for i in range(0, 50):
         video.append_data(Y[:, :, :, i])
     video.close()
+    
 efecto_rippling("barbara.jpg")
 
-def prueba():
-    a = 0
-    while a < 10:
-        for i in range(0, 5):
-            print(i)
-        a += 1
-#prueba()
