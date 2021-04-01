@@ -57,6 +57,6 @@ def efecto_rippling(imagen):
     for i in range(0, 50):
         video.append_data(Y[:, :, :, i])
     video.close()
-    
+
 efecto_rippling("barbara.jpg")
 
