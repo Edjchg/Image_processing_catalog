@@ -4,7 +4,7 @@ from scipy import signal
 import numpy as np
 def aplicar_filtro_sobel(imagen_str):
     # Esta función toma una imagen y aplica sobre esta la convolución con
-    # el kernel tipico del filtro Laplaciano.
+    # los kernel tipicos para Sobel.
     # Entradas: - imagen_str: la ruta de la imagen deseada.
     # Salidas: la imagen con la convolución aplicada.
     # Leyendo la imagen.
