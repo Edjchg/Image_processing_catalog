@@ -26,8 +26,7 @@ def aplicar_filtro_sobel(imagen_str):
     # Convirtiendo la imagen resultante a tipo uint8.
     C = C.astype(np.uint8)
     return C
-
-
+# Probando el filtro Sobel.
 A = imageio.imread("baby_yoda.jpg")
 B = aplicar_filtro_sobel("baby_yoda.jpg")
 plt.figure()
