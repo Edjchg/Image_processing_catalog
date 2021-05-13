@@ -46,6 +46,8 @@ A = im.imread("boat.jpg") # lectura de imagen original escala a grises 512*512
     # Nota: image.io utiliza arrays de numpy por lo que sus tipos son 
     #   compatibles
 
+print(A.shape)
+
 plt.figure(1) # creacion de nueva figura para graficado
 plt.subplot(121) # posicionamiento de imagen original
 plt.title("Imagen Original") # titulo de la imagen original
