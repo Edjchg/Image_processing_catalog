@@ -8,7 +8,7 @@ def otsu_umbral(A):
     m = len(A)
     n = len(A[0])
     # Paso 0:
-    #_, q = np.histogram(A, bins=256, range=(0, 256))
+    # _, q = np.histogram(A, bins=256, range=(0, 256))
     q, _ = np.histogram(A, bins=255, range=(0, 255))
     # Paso 1:
     h = q / (m * n)
@@ -36,7 +36,7 @@ def otsu_umbral(A):
         if denominador == 0:
             vector_sigma[i] = 0
         else:
-            vector_sigma[i] = ((mg * p_vector[i] - m_c[i])**2) / (p_vector[i] * (1 - p_vector[i]))
+            vector_sigma[i] = ((mg * p_vector[i] - m_c[i]) ** 2) / (p_vector[i] * (1 - p_vector[i]))
 
     # Paso 6
     T = np.where(vector_sigma == np.max(vector_sigma))
@@ -44,8 +44,8 @@ def otsu_umbral(A):
     print(np.max(vector_sigma))
 
     B = np.zeros((m, n, 3))
-    B[np.where(A>T)] = 255
-    B[np.where(A<=T)] = 0
+    B[np.where(A > T)] = 255
+    B[np.where(A <= T)] = 0
     return B.astype(np.uint8)
 
 
