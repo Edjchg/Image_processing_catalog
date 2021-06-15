@@ -5,6 +5,10 @@ import numpy as np
 
 
 def otsu_umbrales(A):
+    # Función que toma una imagen y calcula dos valores de corte para
+    # segmentar la imagen en 3 tonos de gris.
+    # Entradas: - A: imagen en blanco y negro.
+    # Salidas: - imagen segmentada con tres tonos de gris.
     m = len(A)
     n = len(A[0])
     # Paso 0:
@@ -31,16 +35,18 @@ def otsu_umbrales(A):
     for k1 in range(0, k):
         for k2 in range(0, k):
             if k1 < k2:
-                P1 = np.sum(h[0:k])
-                P2 = np.sum(h[k1:k2])
-                P3 = np.sum(h[k2:k])
+                P1 = np.sum(h[0:k1])
+                P2 = np.sum(h[k1+1:k2])
+                P3 = np.sum(h[k2+1:k])
                 sum_m1 = 0
+                sum_m2 = 0
+                sum_m3 = 0
                 for i in range(0, k1):
                     sum_m1 += (i - 1) * h[i]
-                sum_m2 = 0
+
                 for i in range(k1, k2):
                     sum_m2 += (i - 1) * h[i]
-                sum_m3 = 0
+
                 for i in range(k2, k):
                     sum_m3 += (i - 1) * h[i]
                 m1 = 0
@@ -59,10 +65,9 @@ def otsu_umbrales(A):
     T2 = T2[0]
     B = np.zeros((m, n, 3))
     print(A[T1,T2])
-    B[np.where(A > T2)] = 255
-    B[np.where(T1 < A)] = 255 // 2
-    B[np.where(A <= T2)] = 255 // 2
-    B[np.where(A <= T1)] = 0
+    B[A > T2] = 255
+    B[np.logical_and(T1 < A, A <= T2)] = 255//2
+    B[A < T1] = 0
     return B.astype(np.uint8)
 
 A = plt.imread("imagen6.jpg")

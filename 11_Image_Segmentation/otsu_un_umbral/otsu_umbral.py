@@ -5,6 +5,10 @@ import numpy as np
 
 
 def otsu_umbral(A):
+    # Función que toma una imagen y calcula un valor de corte para
+    # segmentar la imagen en 2 tonos de gris.
+    # Entradas: - A: imagen en blanco y negro.
+    # Salidas: - imagen segmentada con dos tonos de gris.
     m = len(A)
     n = len(A[0])
     # Paso 0:
@@ -44,8 +48,8 @@ def otsu_umbral(A):
     print(np.max(vector_sigma))
 
     B = np.zeros((m, n, 3))
-    B[np.where(A > T)] = 255
-    B[np.where(A <= T)] = 0
+    B[A > T] = 255
+    B[A <= T] = 0
     return B.astype(np.uint8)
 
 

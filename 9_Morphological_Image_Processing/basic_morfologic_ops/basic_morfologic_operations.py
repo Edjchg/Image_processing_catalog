@@ -4,6 +4,9 @@ import numpy as np
 
 
 def binaria(X):
+    # Toma una imagen en blanco y negro y retorna una imagen de valores de 0 y 255
+    # Entradas: - una imagen en blanco y negro.
+    # Salidas: - una imagen binaria con valores de 0 o 255.
     m = len(X)
     n = len(X[0])
     z = np.size(X[0, 0])
@@ -14,24 +17,44 @@ def binaria(X):
 
 
 def complemento(A):
+    # Función que toma una imagen y obtiene el contrario o su complemento.
+    # Entradas: - una imagen binaria de valores de 0 y 255.
+    # Salidas: - salida con el negativo o complemento de A.
     A = binaria(A)
     A = 255 - A
     return A
 
 
 def union(A, B):
+    # Función que toma dos imagenes del mismo tamaño y obtiene
+    # la operación morfologica de unión entre ambas.
+    # Entradas: - A: imagen binaria
+    #           - B: imagen binaria
+    # salidas: - imagen con el resultado de la unión entre A y B.
     A = binaria(A)
     B = binaria(B)
     C = np.logical_or(A, B)
     return C
 
 def interseccion(A, B):
+    # Función que toma dos imagenes del mismo tamaño y obtiene
+    # la operación morfológica de intersección entre ambas.
+    # Entradas: - A: imagen binaria.
+    #           - B: imagen binaria.
+    # Salidas: - imagen con el resultado de la intersección
+    #            entre A y B
     A = binaria(A)
     B = binaria(B)
     C = np.logical_and(A, B)
     return C
 
 def diferencia(A, B):
+    # Función que toma dos imagenes del mismo tamaño y obtiene
+    # la operación morfológica de diferencia entre ambas.
+    # Entradas: - A: imagen binaria.
+    #           - B: imagen binaria.
+    # Salidas: - imagen con el resultado de la diferencia entre
+    #            A y B.
     A = binaria(A)
     B = binaria(B)
     C = A - B

@@ -7,6 +7,9 @@ from skimage.morphology import (erosion, dilation, opening, closing,  # noqa
 
 
 def binaria(X):
+    # Toma una imagen en blanco y negro y retorna una imagen de valores de 0 y 255
+    # Entradas: - una imagen en blanco y negro.
+    # Salidas: - una imagen binaria con valores de 0 o 255.
     m = len(X)
     n = len(X[0])
     z = np.size(X[0, 0])
@@ -17,12 +20,22 @@ def binaria(X):
 
 
 def apertura(A, B):
+    # Función que toma una imagen y un elemento estructurado y obtiene
+    # la operación morfologica de apertura entre la imagen y el elemento.
+    # Entradas: - A: imagen binaria
+    #           - B: elemento estructurado.
+    # salidas: - imagen con el resultado de la apertura entre A y B.
     A = binaria(A)
     B = binaria(B)
     C = ndimage.binary_opening(A, B)
     return C
 
 def clausura(A, B):
+    # Función que toma una imagen y un elemento estructurado y obtiene
+    # la operación morfologica de clausura entre la imagen y el elemento.
+    # Entradas: - A: imagen binaria
+    #           - B: elemento estructurado.
+    # salidas: - imagen con el resultado de la clausura entre A y B.
     A = binaria(A)
     B = binaria(B)
     C = ndimage.binary_closing(A, B)
